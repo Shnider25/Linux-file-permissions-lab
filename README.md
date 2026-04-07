@@ -31,8 +31,8 @@ I used the `ls` command with the `-la` flag to display a detailed listing of all
 ls -la
 ```
 
-![Checking file and directory permissions with ls -la]
-https://i.imgur.com/Zz7Xvcf.png
+![Checking file and directory permissions with ls -la](screenshot1-ls-la.png)
+
 **Output revealed:**
 - 1 directory: `drafts`
 - 1 hidden file: `.project_x.txt`
@@ -125,6 +125,9 @@ By using `ls -la` to audit and `chmod` to adjust permissions, I successfully ali
 
 [Google Cybersecurity Certificate](https://grow.google/certificates/cybersecurity/) – Coursera
 
+---
+
+*This project is part of my cybersecurity portfolio developed through the Google Cybersecurity Certificate program.*
 ---
 
 *This project is part of my cybersecurity portfolio developed through the Google Cybersecurity Certificate program.*
