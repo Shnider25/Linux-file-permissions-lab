@@ -121,7 +121,7 @@ By using `ls -la` to audit and `chmod` to adjust permissions, I successfully ali
 
 ## 📚 Certificate
 
-[Google Cybersecurity Certificate](https://grow.google/certificates/cybersecurity/) – Coursera
+[Google Cybersecurity Certificate] – Coursera
 
 ---
 
