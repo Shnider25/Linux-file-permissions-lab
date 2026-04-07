@@ -28,13 +28,15 @@ The research team at my organization needed to update file permissions for certa
 I used the `ls` command with the `-la` flag to display a detailed listing of all contents in the `projects` directory, including hidden files.
 
 ```bash
-ls -la projects/
+ls -la
 ```
+
+![Checking file and directory permissions with ls -la](screenshot1-ls-la.png)
 
 **Output revealed:**
 - 1 directory: `drafts`
 - 1 hidden file: `.project_x.txt`
-- 5 project files (e.g., `project_k.txt`, `project_t.txt`, etc.)
+- 4 project files: `project_k.txt`, `project_m.txt`, `project_r.txt`, `project_t.txt`
 
 Each entry includes a **10-character permissions string** in the first column.
 
@@ -67,51 +69,53 @@ The organization determined that **others should not have write access** to any 
 
 ```bash
 chmod o-w project_k.txt
-ls -la projects/
+ls -la
 ```
 
-This brought `project_k.txt` into compliance with the organization's authorization policy.
+![Removing write permissions for others on project_k.txt](screenshot2-chmod-project-k.png)
+
+After running `chmod o-w project_k.txt`, the permissions changed from `-rw-rw-rw-` to `-rw-rw-r--`, confirming others no longer have write access.
 
 ---
 
-### 4. Change Permissions on a Hidden File
+### 4. Change Directory Permissions
 
-The team archived `project_x.txt` and required that:
-- **No one** has write access
-- **User and group** retain read access
+Only `researcher2` should have access to the `drafts` directory. This meant removing execute permissions from the group.
 
-Hidden files in Linux start with a `.` — in this case `.project_x.txt`.
+```bash
+chmod g-x drafts
+ls -la
+```
+
+![Removing group execute permissions on drafts directory](screenshot3-chmod-drafts.png)
+
+After this change, the `drafts` directory permissions updated so that only `researcher2` retains execute access.
+
+---
+
+### 5. Change Permissions on a Hidden File
+
+The team archived `project_x.txt` and required that no one has write access, but the user and group should retain read access. Hidden files in Linux start with a `.`
 
 ```bash
 chmod u-w,g-w,g+r .project_x.txt
-ls -la projects/
+ls -la
 ```
 
-This removed write access from both user and group, and ensured the group had read access.
+![Updating permissions on hidden file .project_x.txt](screenshot4-chmod-project-x.png)
 
----
-
-### 5. Change Directory Permissions
-
-Only `researcher2` should have access to the `drafts` directory. This meant removing execute permissions from the group, since `researcher2` already had the necessary permissions.
-
-```bash
-chmod g-x drafts/
-ls -la projects/
-```
-
-After this change, only `researcher2` retained execute permissions on the `drafts` directory.
+The permissions on `.project_x.txt` changed to `-r--r-----`, removing all write access while preserving read access for the user and group.
 
 ---
 
 ## ✅ Summary
 
-| Task | Command Used | Purpose |
+| Task | Command Used | Result |
 |---|---|---|
-| Audit permissions | `ls -la` | View all file/directory permissions |
-| Remove others' write access | `chmod o-w project_k.txt` | Principle of least privilege |
-| Update hidden file permissions | `chmod u-w,g-w,g+r .project_x.txt` | Restrict archived file access |
-| Restrict directory access | `chmod g-x drafts/` | Limit access to authorized user only |
+| Audit permissions | `ls -la` | Identified all permission issues |
+| Remove others' write access | `chmod o-w project_k.txt` | `project_k.txt` secured |
+| Restrict directory access | `chmod g-x drafts` | Only `researcher2` can access `drafts` |
+| Update hidden file permissions | `chmod u-w,g-w,g+r .project_x.txt` | Archived file is now read-only |
 
 By using `ls -la` to audit and `chmod` to adjust permissions, I successfully aligned the `projects` directory with my organization's security requirements — demonstrating practical application of Linux file permission management in a cybersecurity context.
 
@@ -119,7 +123,7 @@ By using `ls -la` to audit and `chmod` to adjust permissions, I successfully ali
 
 ## 📚 Certificate
 
-[Google Cybersecurity Certificate](https://grow.google/certificates/cybersecurity/) – Coursera  
+[Google Cybersecurity Certificate](https://grow.google/certificates/cybersecurity/) – Coursera
 
 ---
 
