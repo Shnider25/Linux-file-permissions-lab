@@ -31,7 +31,7 @@ I used the `ls` command with the `-la` flag to display a detailed listing of all
 ls -la
 ```
 
-![Checking file and directory permissions with ls -la](screenshot1-ls-la.png)
+![image alt](https://i.imgur.com/Zz7Xvcf.png)
 
 **Output revealed:**
 - 1 directory: `drafts`
@@ -71,8 +71,8 @@ The organization determined that **others should not have write access** to any 
 chmod o-w project_k.txt
 ls -la
 ```
+![image alt](https://i.imgur.com/ZbnB1nY.png)
 
-![Removing write permissions for others on project_k.txt](screenshot2-chmod-project-k.png)
 
 After running `chmod o-w project_k.txt`, the permissions changed from `-rw-rw-rw-` to `-rw-rw-r--`, confirming others no longer have write access.
 
@@ -86,8 +86,7 @@ Only `researcher2` should have access to the `drafts` directory. This meant remo
 chmod g-x drafts
 ls -la
 ```
-
-![Removing group execute permissions on drafts directory](screenshot3-chmod-drafts.png)
+![image alt](https://i.imgur.com/5lYvhGB.png)
 
 After this change, the `drafts` directory permissions updated so that only `researcher2` retains execute access.
 
@@ -101,8 +100,7 @@ The team archived `project_x.txt` and required that no one has write access, but
 chmod u-w,g-w,g+r .project_x.txt
 ls -la
 ```
-
-![Updating permissions on hidden file .project_x.txt](screenshot4-chmod-project-x.png)
+![image alt](https://i.imgur.com/c8TPbj5.png)
 
 The permissions on `.project_x.txt` changed to `-r--r-----`, removing all write access while preserving read access for the user and group.
 
